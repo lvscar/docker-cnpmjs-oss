@@ -4,14 +4,15 @@ MAINTAINER Firef0x <Firefgx {aT} gmail.com>
 # Working enviroment
 ENV CNPMJS_ORG_USER="www-data" \
     CNPMJS_ORG_INSTALL_DIR="/var/app/cnpmjs.org" \
-    CNPMJS_ORG_CONFIG_DIR="${CNPMJS_ORG_INSTALL_DIR}/config" \
+    CNPMJS_ORG_CONFIG_FILE="${CNPMJS_ORG_INSTALL_DIR}/config/config.js" \
     CNPMJS_ORG_DATA_DIR="/var/www" \
+    CNPMJS_ORG_DOCS_DIR="${CNPMJS_ORG_INSTALL_DIR}/docs/web" \
     CNPMJS_ORG_VERSION=2.14.0
 
 RUN \
     mkdir -p /var/app && \
     install -o ${CNPMJS_ORG_USER} -d /var/app && \
-    mkdir ${CNPMJS_ORG_DATA_DIR} && chown ${CNPMJS_ORG_USER}:${CNPMJS_ORG_USER} -R ${CNPMJS_ORG_DATA_DIR}
+    mkdir ${CNPMJS_ORG_DATA_DIR} && chown -R ${CNPMJS_ORG_USER}:${CNPMJS_ORG_USER} ${CNPMJS_ORG_DATA_DIR}
 
 USER ${CNPMJS_ORG_USER}
 
@@ -25,7 +26,7 @@ WORKDIR ${CNPMJS_ORG_INSTALL_DIR}
 RUN npm install oss-cnpm && \
     npm install
 
-VOLUME ["${CNPMJS_ORG_CONFIG_DIR}", "${CNPMJS_ORG_DATA_DIR}"]
+VOLUME ["${CNPMJS_ORG_CONFIG_FILE}", "${CNPMJS_ORG_DOCS_DIR}", "${CNPMJS_ORG_DATA_DIR}"]
 EXPOSE 7001/tcp 7002/tcp
 
 # Entrypoint
