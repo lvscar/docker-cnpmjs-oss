@@ -1,8 +1,8 @@
-# firef0x/docker-cnpmjs-oss:2.14.0
+# firef0x/docker-cnpmjs-oss:2.19.2
 
 ## Introduction
 
-Dockerfile to build a container image of [cnpmjs.org](https://cnpmjs.org/), the "Company NPM" by alibaba ![cnpmjs.org-version-badge](https://img.shields.io/badge/cnpm-2.14.0-blue.svg?style=flat-square), with [oss-cnpm](https://npmjs.org/package/oss-cnpm) ![oss-cnpm-version-badge](https://img.shields.io/npm/v/oss-cnpm.svg?style=flat-square) support.
+Dockerfile to build a container image of [cnpmjs.org](https://cnpmjs.org/), the "Company NPM" by alibaba ![cnpmjs.org-version-badge](https://img.shields.io/badge/cnpm-2.19.2-blue.svg?style=flat-square), with [oss-cnpm](https://npmjs.org/package/oss-cnpm) ![oss-cnpm-version-badge](https://img.shields.io/npm/v/oss-cnpm.svg?style=flat-square) support.
 
 Automated builds of the image are available on [Dockerhub](https://hub.docker.com/r/firef0x/docker-cnpmjs-oss/) and is the recommended method of installation.
 
@@ -16,7 +16,7 @@ $ docker run --name cnpmjs -d \
 	--volume /srv/docker/cnpmjs/cnpmjs/docs:/var/app/cnpmjs.org/docs/web \
 	--volume /srv/docker/cnpmjs/cnpmjs/data:/var/www \
 	--restart always \
-	firef0x/docker-cnpmjs-oss:2.14.0
+	firef0x/docker-cnpmjs-oss:2.19.2
 
 ```
 
@@ -31,7 +31,7 @@ $ docker run --name cnpmjs -d \
 	--volume /srv/docker/cnpmjs/cnpmjs/docs:/var/app/cnpmjs.org/docs/web \
 	--volume /srv/docker/cnpmjs/cnpmjs/data:/var/www \
 	--restart always \
-	firef0x/docker-cnpmjs-oss:2.14.0
+	firef0x/docker-cnpmjs-oss:2.19.2
 
 $ docker run --name cnpmjs-mysql -d \
 	--volume /srv/docker/cnpmjs/mysql/conf:/etc/mysql/conf.d \
