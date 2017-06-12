@@ -1,0 +1,41 @@
+version: '3'
+services:
+  web:
+        build:
+                context: .
+                dockerfile: Dockerfile
+        image: cnpmjs.org:2.19.4
+        ports:
+                - "7001:7001"
+                - "7002:7002"
+        networks:
+                - cnpmjs_nw
+        external_links:
+                - mysql-db
+        volumes:
+               - /Users/lvs/Code/docker-volumes/cnpmjs/config/config.js:/var/app/cnpmjs.org/config/config.js
+               - /Users/lvs/Code/docker-volumes/cnpmjs/data/:/var/www
+               - /Users/lvs/Code/docker-volumes/cnpmjs/docs/web:/var/app/cnpmjs.org/docs/web              
+
+networks:
+  cnpmjs_nw:
+
+
+
+#   # Outside  Mysql Container
+#    
+#
+#   ## put cnpm initial sql file to the volume path
+#   $docker run --name mysql-db -e MYSQL_ROOT_PASSWORD=no-password  --volume  /Users/lvs/Code/docker-volumes/mysql/sqlfiles/:/sqlfiles  -d mysql/mysql-server
+#
+#   ## login mysql to create db and load cnpm initial sql file
+#   $docker exec -it mysql-db mysql -u root -p
+#
+#   ## create every ip access able mysql user
+#   CREATE USER 'username'@'%' IDENTIFIED BY 'password';
+#   GRANT ALL PRIVILEGES ON *.* TO 'username'@'%' WITH GRANT OPTION;
+#   FLUSH PRIVILEGES;
+# 
+#   ## attach the container to the right network
+#   $docker network connect dockercnpmjsoss_cnpmjs_nw mysql-db
+
